@@ -1,0 +1,71 @@
+import java.util.*;
+
+public class Nov20 {
+    private static Queue<String> QueueSystem = new LinkedList<>();
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void Start() {
+        System.out.println("The starting customer is " + QueueSystem.peek() + "!");
+        System.out.println("Please step forward and place your order!");
+        System.out.println("Please input 'Next' to move to the next queueing customer");
+
+        while (true) {
+            String input = sc.nextLine();
+
+            if (input.equalsIgnoreCase("Next")) {
+                Next();
+                break;
+            }
+            else {
+                System.out.println("Invalid input. Please input 'Next'.");
+            }
+        }
+    }
+
+    public static void Next() {
+        QueueSystem.remove();
+        if (!QueueSystem.isEmpty()) {
+            System.out.println("The next customer is " + QueueSystem.peek() + "!");
+            System.out.println("Please step forward and place your order!");
+            System.out.println("The current queue within the T1 Cafe is " + QueueSystem + ".");
+            System.out.println("Please input 'Next' to move to the next queueing customer");
+        }
+        else {
+            System.out.println("No more customers in queue!");
+            System.out.println("Thank you for using T1 Cafe Queue System!");
+            return;
+        }
+
+        while (true) {
+            String input = sc.nextLine();
+
+            if (input.equalsIgnoreCase("Next")) {
+                Next();
+                break;
+            }
+            else {
+                System.out.println("Invalid input. Please input 'Next'.");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        for (int i = 1; i <= 10; i++) {
+            QueueSystem.add("Customer " + i);
+        }
+        System.out.println("Welcome to T1 Cafe Queue System!");
+        System.out.println("The current queue within the T1 Cafe is " + QueueSystem + ".");
+        System.out.println("Please input 'Start' to begin the queue!");
+
+        while (true) {
+            String input = sc.nextLine();
+            if (input.equalsIgnoreCase("Start")) {
+                Start();
+                break;
+            }
+            else {
+                System.out.println("Invalid input. Please input 'Start'.");
+            }
+        }
+    }
+}
